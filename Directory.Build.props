@@ -1,0 +1,47 @@
+﻿<Project>
+
+    <!-- Authorship -->
+    <PropertyGroup>
+        <Company>LanguageWire</Company>
+        <Product>Project Api Sample App</Product>
+        <Copyright>LanguageWire, 2023–$([System.DateTime]::Today.Year)</Copyright>
+    </PropertyGroup>
+
+    <!-- Build -->
+    <PropertyGroup>
+        <Version>0.1.0</Version> <!-- Can be suffixed with pre-release annotations -->
+        <TargetFramework>net7.0</TargetFramework>
+        <AssemblyName>LanguageWire.$(MSBuildProjectName)</AssemblyName>
+        <RootNamespace>$(AssemblyName)</RootNamespace>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <DebugType>embedded</DebugType>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="$(AssemblyName).UnitTests"/>
+        <InternalsVisibleTo Include="$(AssemblyName).IntegrationTests"/>
+        <InternalsVisibleTo Include="DynamicProxyGenAssembly2"/> <!-- Needed by Moq -->
+    </ItemGroup>
+
+    <!-- Language features -->
+    <PropertyGroup>
+        <LangVersion>latest</LangVersion>
+        <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <!-- Code analyzers -->
+    <PropertyGroup>
+        <AnalysisLevel>latest</AnalysisLevel>
+        <EnableNETAnalyzers>True</EnableNETAnalyzers>
+        <RunAnalyzersDuringLiveAnalysis>True</RunAnalyzersDuringLiveAnalysis>
+        <RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
+        <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$(Configuration) == 'Release'">
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    </PropertyGroup>
+
+</Project>
